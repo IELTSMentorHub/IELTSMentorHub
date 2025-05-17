@@ -22,13 +22,13 @@
             --box-shadow: 0 8px 20px rgba(0,0,0,0.1);
             --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
-
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f5f7ff;
@@ -36,7 +36,7 @@
             line-height: 1.6;
             padding: 20px;
         }
-
+        
         .test-container {
             max-width: 800px;
             margin: 2rem auto;
@@ -48,12 +48,12 @@
             opacity: 0;
             animation: fadeInUp 0.6s forwards;
         }
-
+        
         .test-header {
             text-align: center;
             margin-bottom: 2rem;
         }
-
+        
         .test-header h1 {
             color: var(--primary);
             margin-bottom: 0.5rem;
@@ -62,11 +62,11 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-
+        
         .test-header p {
             color: #6c757d;
         }
-
+        
         .progress-container {
             width: 100%;
             height: 8px;
@@ -75,7 +75,7 @@
             margin: 1.5rem 0;
             overflow: hidden;
         }
-
+        
         .progress-bar {
             height: 100%;
             background: linear-gradient(to right, var(--accent), var(--primary));
@@ -83,7 +83,7 @@
             transition: var(--transition);
             border-radius: 4px;
         }
-
+        
         .question {
             margin-bottom: 1.5rem;
             padding: 1.5rem;
@@ -94,41 +94,67 @@
             transition: var(--transition);
             border: 1px solid rgba(0,0,0,0.05);
         }
-
+        
         .question:hover {
             transform: scale(1);
             box-shadow: 0 6px 16px rgba(0,0,0,0.1);
         }
-
+        
         .question p {
             font-weight: 600;
             margin-bottom: 1rem;
             font-size: 1.1rem;
             color: var(--dark);
         }
-
-        .answer-input {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid #dee2e6;
+        
+        .options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.8rem;
+        }
+        
+        .option {
+            position: relative;
+        }
+        
+        .option input {
+            position: absolute;
+            opacity: 0;
+        }
+        
+        .option label {
+            display: block;
+            padding: 1rem 1.5rem;
+            background: var(--light);
             border-radius: 8px;
-            font-size: 1rem;
+            cursor: pointer;
             transition: var(--transition);
-            margin-top: 0.5rem;
+            border: 1px solid #dee2e6;
+            font-size: 1rem;
         }
-
-        .answer-input:focus {
+        
+        .option label:hover {
+            background: #e9ecef;
+        }
+        
+        .option input:checked + label {
+            background: var(--primary);
+            color: white;
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.3);
-            outline: none;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(67, 97, 238, 0.3);
         }
-
+        
+        .option input:focus + label {
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.3);
+        }
+        
         .navigation {
             display: flex;
             justify-content: space-between;
             margin-top: 2rem;
         }
-
+        
         button {
             padding: 0.8rem 1.8rem;
             border: none;
@@ -141,37 +167,37 @@
             align-items: center;
             justify-content: center;
         }
-
+        
         button:disabled {
             opacity: 0.6;
             cursor: not-allowed;
         }
-
+        
         .btn-prev {
             background: white;
             color: var(--primary);
             border: 1px solid var(--primary);
         }
-
+        
         .btn-prev:hover:not(:disabled) {
             background: #f0f4ff;
         }
-
+        
         .btn-next, .btn-submit {
             background: linear-gradient(to right, var(--accent), var(--primary));
             color: white;
             box-shadow: 0 4px 12px rgba(67, 97, 238, 0.3);
         }
-
+        
         .btn-next:hover:not(:disabled), .btn-submit:hover:not(:disabled) {
             transform: translateY(-2px);
             box-shadow: 0 6px 16px rgba(67, 97, 238, 0.4);
         }
-
+        
         .btn-submit {
             display: none;
         }
-
+        
         .result-container {
             display: none;
             text-align: center;
@@ -182,20 +208,20 @@
             margin-top: 2rem;
             animation: fadeIn 0.6s;
         }
-
+        
         .result-icon {
             font-size: 5rem;
             margin-bottom: 1rem;
         }
-
+        
         .success .result-icon {
             color: var(--success);
         }
-
+        
         .failure .result-icon {
             color: var(--danger);
         }
-
+        
         .score-display {
             font-size: 3rem;
             font-weight: 700;
@@ -204,12 +230,12 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-
+        
         .feedback {
             margin: 1rem 0;
             font-size: 1.1rem;
         }
-
+        
         .btn-retry {
             background: var(--primary);
             color: white;
@@ -356,7 +382,7 @@
             color: var(--success);
             padding: 0.3rem 0.8rem;
             border-radius: 20px;
-            background-color: rgba(76, 201, 240, 0.1);
+            background-color: rgba(76, 240, 194, 0.1);
             display: inline-block;
             margin-left: 0.5rem;
         }
@@ -414,8 +440,8 @@
                 padding: 1rem;
             }
             
-            .answer-input {
-                padding: 0.8rem;
+            .option label {
+                padding: 0.8rem 1rem;
             }
 
             .answer-item {
@@ -468,55 +494,106 @@
             // Questions data
             const questions = [
     {
-        question: "Make up a sentence using these words: <br> will / been / by / the / delegation / arrives / preparations / we / the / making / have / for / three / days / straight",
-        answer: "By the time the delegation arrives, we will have been making the preparations for three straight days"
+        question: "Choose the correct option. <br> Whatever the teacher says to you should be considered carefully.",
+        options: [
+            "Subject of the sentence", // Correct (A)
+            "Object of the verb",
+            "Object of preposition",
+            "Complement of clause"
+        ],
+        answer: 0 // A
     },
     {
-        question: "Make up a sentence using these words: <br> had / board / members / been / receptive / more / innovation / to / company / the / be / would / industry / the / at / forefront / of / now",
-        answer: "Had the board members been more receptive to innovation, the company would be at the forefront of the industry now"
+        question: "Choose the correct option. <br> I don't believe that he completed the assignment without help.",
+        options: [
+            "Complement of verb",
+            "Object of the verb", // Correct (B)
+            "Subject of the clause",
+            "Object of preposition"
+        ],
+        answer: 1 // B
     },
     {
-        question: "Make up a sentence using these words: <br> can't / instructions / have / the / they / understood / approach / their / is / contrary / completely / what / to / we / outlined",
-        answer: "They can't have understood the instructions  their approach is completely contrary to what we outlined"
+        question: "Choose the correct option. <br> The issue is whether the data was manipulated.",
+        options: [
+            "Object of preposition",
+            "Object of the verb",
+            "Subject of the clause",
+            "Subject complement" // Correct (D)
+        ],
+        answer: 3 // D
     },
     {
-        question: "Make up a sentence using these words: <br> legislation / been / the / had / drafted / opposition / before / their / raised / objections / the",
-        answer: "The legislation had been drafted before the opposition raised their objections"
+        question: "Choose the correct option. <br> She was shocked by what the professor implied during the meeting.",
+        options: [
+            "Subject",
+            "Object of preposition", // Correct (B)
+            "Complement",
+            "Direct object"
+        ],
+        answer: 1 // B
     },
     {
-        question: "Make up a sentence using these words: <br> only / after / terms / scrutinizing / agreement / the / the / of / potential / they / did / loopholes / spot / the",
-        answer: "Only after scrutinizing the terms of the agreement did they spot the potential loopholes"
+        question: "Choose the correct option. <br> That some researchers falsify results is deeply concerning.",
+        options: [
+            "Complement",
+            "Direct object",
+            "Subject", // Correct (C)
+            "Object of preposition"
+        ],
+        answer: 2 // C
     },
     {
-        question: "Make up a sentence using these words: <br> needn't / trouble / have / system / gone / such / to / you / the / was / self-explanatory / designed / be / to",
-        answer: "You needn't have gone to such trouble  the system was designed to be self-explanatory"
+        question: "Choose the correct option. <br> He didn't respond to what was written in the report.",
+        options: [
+            "Subject",
+            "Complement",
+            "Object of preposition", // Correct (C)
+            "Object of the verb"
+        ],
+        answer: 2 // C
     },
     {
-        question: "Make up a sentence using these words: <br> as / soon / you / had / I'd / incident / me / informed / about / the / media / the / got / wind / before / of / it",
-        answer: "I'd as soon you had informed me about the incident before the media got wind of it"
+        question: "Choose the correct option. <br> The committee must understand that transparency builds trust.",
+        options: [
+            "Object of preposition",
+            "Subject",
+            "Object of the verb", // Correct (C)
+            "Subject complement"
+        ],
+        answer: 2 // C
     },
     {
-        question: "Make up a sentence using these words: <br> hardly / merger / announcement / been / had / the / made / prices / stock / began / fluctuate / wildly / to / the / when",
-        answer: "Hardly had the merger announcement been made when the stock prices began to fluctuate wildly"
+        question: "Choose the correct option. <br> The final decision will depend on whether the university approves the plan.",
+        options: [
+            "Subject",
+            "Object of the verb",
+            "Complement",
+            "Object of preposition" // Correct (D)
+        ],
+        answer: 3 // D
     },
     {
-        question: "Make up a sentence using these words: <br> high / time / practices / such / were / more / regulated / rigorously / it's",
-        answer: "It's high time such practices were more rigorously regulated"
+        question: "Choose the correct option. <br> We all admire how she handled the pressure during the conference.",
+        options: [
+            "Subject",
+            "Object of the verb", // Correct (B)
+            "Subject complement",
+            "Modifier"
+        ],
+        answer: 1 // B
     },
     {
-        question: "Make up a sentence using these words: <br> were / CEO / the / step / down / to / company / the / face / would / challenges / unprecedented",
-        answer: "Were the CEO to step down, the company would face unprecedented challenges"
-    },
-    {
-        question: "Make up a sentence using these words: <br> under / no / account / confidential / information / to / be / disclosed / should / unauthorized / personnel",
-        answer: "Under no account should confidential information be disclosed to unauthorized personnel"
-    },
-    {
-        question: "Make up a sentence using these words: <br> implications / the / were / far-reaching / so / they / as / necessitated / to / be / strategy / our / of / complete / overhaul / a",
-        answer: "The implications were so far-reaching as to necessitate a complete overhaul of our strategy"
+        question: "Choose the correct option. <br> The reality is that gender bias still affects hiring practices.",
+        options: [
+            "Object of preposition",
+            "Subject",
+            "Subject complement", // Correct (C)
+            "Object of the verb"
+        ],
+        answer: 2 // C
     }
 ];
-
             
             // DOM elements
             const quizContainer = document.getElementById('quiz');
@@ -543,19 +620,33 @@
             function renderQuestion() {
                 const question = questions[currentQuestion];
                 
+                let optionsHtml = '';
+                question.options.forEach((option, index) => {
+                    const isChecked = userAnswers[currentQuestion] === index;
+                    optionsHtml += `
+                        <div class="option">
+                            <input type="radio" name="question" id="q${currentQuestion}-opt${index}" 
+                                   value="${index}" ${isChecked ? 'checked' : ''}>
+                            <label for="q${currentQuestion}-opt${index}">${String.fromCharCode(97 + index)}) ${option}</label>
+                        </div>
+                    `;
+                });
+                
                 quizContainer.innerHTML = `
                     <div class="question animate__animated animate__fadeIn">
                         <p>${currentQuestion + 1}. ${question.question}</p>
-                        <input type="text" class="answer-input" id="answerInput" 
-                               placeholder="Type your answer here..." 
-                               value="${userAnswers[currentQuestion] || ''}">
+                        <div class="options">
+                            ${optionsHtml}
+                        </div>
                     </div>
                 `;
                 
-                // Add event listener to input
-                document.getElementById('answerInput').addEventListener('input', function() {
-                    userAnswers[currentQuestion] = this.value.trim();
-                    updateNavigation();
+                // Add event listeners to options
+                document.querySelectorAll('input[name="question"]').forEach(input => {
+                    input.addEventListener('change', function() {
+                        userAnswers[currentQuestion] = parseInt(this.value);
+                        updateNavigation();
+                    });
                 });
             }
             
@@ -570,7 +661,7 @@
                 prevBtn.disabled = currentQuestion === 0;
                 
                 // Check if current question is answered
-                const isAnswered = userAnswers[currentQuestion] !== null && userAnswers[currentQuestion] !== '';
+                const isAnswered = userAnswers[currentQuestion] !== null;
                 nextBtn.disabled = !isAnswered;
                 
                 // Show submit button on last question if answered
@@ -611,8 +702,11 @@
                 `;
                 
                 questions.forEach((question, index) => {
-                    const userAnswer = userAnswers[index] || 'No answer';
-                    const isCorrect = userAnswer.toLowerCase() === question.answer.toLowerCase();
+                    const userAnswerIndex = userAnswers[index];
+                    const isCorrect = userAnswerIndex === question.answer;
+                    const userAnswerText = userAnswerIndex !== null ? 
+                        question.options[userAnswerIndex] : 'No answer';
+                    const correctAnswerText = question.options[question.answer];
                     const iconClass = isCorrect ? 'fas fa-check-circle' : 'fas fa-times-circle';
                     
                     html += `
@@ -624,13 +718,13 @@
                             <div class="answer-details">
                                 <div class="answer-row">
                                     <span class="answer-label">Your answer:</span>
-                                    <span class="user-answer">${userAnswer}</span>
+                                    <span class="user-answer">${userAnswerText}</span>
                                     <i class="answer-icon ${iconClass}"></i>
                                 </div>
                                 ${!isCorrect ? `
                                     <div class="answer-row">
                                         <span class="answer-label">Correct answer:</span>
-                                        <span class="correct-answer">${question.answer}</span>
+                                        <span class="correct-answer">${correctAnswerText}</span>
                                     </div>
                                 ` : ''}
                             </div>
@@ -646,7 +740,7 @@
             function showResults() {
                 score = 0;
                 questions.forEach((question, index) => {
-                    if (userAnswers[index] && userAnswers[index].toLowerCase() === question.answer.toLowerCase()) {
+                    if (userAnswers[index] === question.answer) {
                         score++;
                     }
                 });

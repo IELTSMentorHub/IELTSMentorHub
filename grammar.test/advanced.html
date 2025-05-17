@@ -494,64 +494,131 @@
             // Questions data
             const questions = [
     {
-        question: "By the time the delegation arrives, we ___ the preparations for three straight days.",
-        options: ["will be making", "will have been making", "have been making", "are making", "will make"],
-        answer: 1
+        question: "Choose the correct option to complete each sentence. <br> If I _____ that course last semester, I _____ how to write a literature review now.",
+        options: ["take / know", "took / knew", "had taken / would know", "would take / would know"],
+        answer: 2 // C
     },
     {
-        question: "___ the board members been more receptive to innovation, the company ___ at the forefront of the industry now.",
-        options: ["Had...would be", "Were...would have been", "Should...were", "Would...had been", "Have...would be"],
-        answer: 0
+        question: "Choose the correct option to complete each sentence. <br> If she _____ the deadline, she _____ eligible for the grant today.",
+        options: ["hadn't missed / would be", "didn't miss / would be", "missed / would have been", "had missed / would be"],
+        answer: 0 // A
     },
     {
-        question: "They ___ have misunderstood the instructions - their approach is completely contrary to what we outlined.",
-        options: ["must", "could", "should", "might", "shall"],
-        answer: 0
+        question: "Choose the correct option to complete each sentence. <br> If we _____ the workshop on leadership, we _____ more prepared now.",
+        options: ["attended / are", "had attended / would feel", "attend / feel", "would attend / would feel"],
+        answer: 1 // B
     },
     {
-        question: "The legislation ___ before the opposition raised their objections.",
-        options: ["had been being drafted", "had been drafted", "was being drafted", "has been drafted", "was drafted"],
-        answer: 1
+        question: "Choose the correct option to complete each sentence. <br> If they _____ their findings earlier, they _____ more recognition now.",
+        options: ["published / got", "had published / would have got", "had published / would have", "would publish / would get"],
+        answer: 2 // C
     },
     {
-        question: "Only after ___ the terms of the agreement ___ the potential loopholes.",
-        options: ["scrutinizing...they spotted", "having scrutinized...did they spot", "scrutinize...they did spot", "scrutinized...had they spotted", "being scrutinized...they were spotting"],
-        answer: 1
+        question: "Choose the correct option to complete each sentence. <br> If I _____ for the Erasmus program, I _____ abroad now.",
+        options: ["applied / study", "would apply / would study", "had applied / would be studying", "was applying / would study"],
+        answer: 2 // C
+    },
+    // option 2
+    {
+    question: "Choose the best answer. <br> If he _____ more organized, he _____ his thesis on time.",
+        options: [
+            "had been / would submit",
+            "were / would have submitted",  // Correct (B)
+            "was / will have submitted",
+            "had been / would have submit"
+        ],
+        answer: 1  // B
     },
     {
-        question: "You ___ have gone to such trouble - the system was designed to be self-explanatory.",
-        options: ["mustn't", "couldn't", "needn't", "wouldn't", "mightn't"],
-        answer: 2
+        question: "Choose the best answer. <br> If we _____ more staff, we _____ the survey last month.",
+        options: [
+            "had / would have completed",  // Correct (A)
+            "have / will complete",
+            "had had / would complete",
+            "have / would have completed"
+        ],
+        answer: 0  // A
     },
     {
-        question: "I'd as soon you ___ me about the incident before the media got wind of it.",
-        options: ["informed", "had informed", "would inform", "inform", "have informed"],
-        answer: 1
+        question: "Choose the best answer. <br> If the rector _____ the initiative, it _____ funding.",
+        options: [
+            "supports / will receive",
+            "supported / would receive",
+            "supported / would have received",  // Correct (C)
+            "had supported / would receive"
+        ],
+        answer: 2  // C
     },
     {
-        question: "Hardly ___ the merger announcement ___ the stock prices began to fluctuate wildly.",
-        options: ["had...been made when", "was...made than", "had...made when", "was...being made than", "has...been made when"],
-        answer: 0
+        question: "Choose the best answer. <br> If students _____ the instructions, they _____ the assignment.",
+        options: [
+            "understood / didn't fail",
+            "understand / won't fail",
+            "understood / wouldn't have failed",  // Correct (C)
+            "had understood / would fail"
+        ],
+        answer: 2  // C
     },
     {
-        question: "It's high time such practices ___ more rigorously regulated.",
-        options: ["are", "were", "have been", "had been", "being"],
-        answer: 1
+        question: "Choose the best answer. <br> If I _____ more about gender policies, I _____ better examples in my report.",
+        options: [
+            "knew / would have included",  // Correct (A)
+            "know / would include",
+            "had known / would include",
+            "was knowing / included"
+        ],
+        answer: 0  // A
+    },
+    // option 3
+    {
+        question: "Choose the correct answer. <br> If universities had addressed gender inequality earlier, more women _____ leadership positions now.",
+        options: [
+            "hold",
+            "held",
+            "would be holding",  // Correct (C)
+            "would have held"
+        ],
+        answer: 2  // C
     },
     {
-        question: "___ the CEO to step down, the company would face unprecedented challenges.",
-        options: ["Would", "Should", "Were", "Did", "Had"],
-        answer: 2
+        question: "Choose the correct answer. <br> If I were fluent in English, I _____ at last year's international conference.",
+        options: [
+            "would have presented",  // Correct (A)
+            "will present",
+            "would present",
+            "had presented"
+        ],
+        answer: 0  // A
     },
     {
-        question: "On no account ___ to disclose confidential information to unauthorized personnel.",
-        options: ["employees are", "are employees", "employees have", "do employees", "have employees"],
-        answer: 1
+        question: "Choose the correct answer. <br> If they had collected better data, the research _____ more reliable now.",
+        options: [
+            "was",
+            "will be",
+            "would be",  // Correct (C)
+            "would have been"
+        ],
+        answer: 2  // C
     },
     {
-        question: "The implications were ___ far-reaching ___ they necessitated a complete overhaul of our strategy.",
-        options: ["so...that", "such...as to", "too...that", "as...as to", "very...for"],
-        answer: 0
+        question: "Choose the correct answer. <br> If my supervisor weren't on leave, he _____ me feedback last week.",
+        options: [
+            "would give",
+            "will give",
+            "would have given",  // Correct (C)
+            "had given"
+        ],
+        answer: 2  // C
+    },
+    {
+        question: "Choose the correct answer. <br> If we _____ student feedback, we _____ fewer complaints now.",
+        options: [
+            "hadn't ignored / would have",
+            "ignored / had",
+            "hadn't ignored / would have had",
+            "hadn't ignored / would have"  // Correct (D)
+        ],
+        answer: 3  // D
     }
 ];
             
