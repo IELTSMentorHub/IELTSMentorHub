@@ -65,8 +65,11 @@
                                 <li><a href="../reading/advanced.html">Advanced (C1)</a></li>
                             </ul>
                           </li>
-                    <li><a href="../sing.up.html" class="nav-btn">Sign Up</a></li>
-                </ul>
+</li><a href="https://forms.gle/Ku1YKuzSJoNbPXwy5" class="nav-btn mobile-btn">Registration</a></li>
+                          <ul class="navbar">
+  <li><a href="sing.up.html" class="nav-btn" id="signUpLink">Sign Up</a></li>
+  <li><a href="#" class="nav-btn" id="logoutBtn" style="display: none;">Log Out</a></li>
+</ul>                </ul>
             </nav>
         </div>
     </header>
@@ -296,6 +299,41 @@
     </footer>
 
     <script src="script.js"></script>
+    <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+  import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDhquB54mmlWdjaLt_DehvrLWf9-odK1jw",
+    authDomain: "ieltsmentorhub-7ab31.firebaseapp.com",
+    projectId: "ieltsmentorhub-7ab31",
+    storageBucket: "ieltsmentorhub-7ab31.appspot.com",
+    messagingSenderId: "114050837977",
+    appId: "1:114050837977:web:77e26664a2ca9a77713dc8"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  const signUpLink = document.getElementById("signUpLink");
+  const logoutBtn = document.getElementById("logoutBtn");
+
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      signUpLink.style.display = "none";
+      logoutBtn.style.display = "inline-block";
+    } else {
+      signUpLink.style.display = "inline-block";
+      logoutBtn.style.display = "none";
+    }
+  });
+
+  logoutBtn.addEventListener("click", () => {
+    signOut(auth).then(() => {
+      location.reload();
+    });
+  });
+</script>
 </body>
 </html>
    
