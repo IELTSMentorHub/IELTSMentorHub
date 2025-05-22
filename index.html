@@ -11,8 +11,38 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script>
-        (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="6VEDOk7GUi2KOCLHVVBhn";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
-        </script>
+(function(){
+  if (!window.chatbase || window.chatbase("getState") !== "initialized") {
+    var q = [];
+    function chatbaseFunc() {
+      q.push(arguments);
+    }
+    chatbaseFunc.q = q;
+    window.chatbase = new Proxy(chatbaseFunc, {
+      get: function(target, prop) {
+        if (prop === "q") return target.q;
+        return function() {
+          return target(prop, ...arguments);
+        };
+      }
+    });
+  }
+
+  const onLoad = function() {
+    const script = document.createElement("script");
+    script.src = "https://www.chatbase.co/embed.min.js";
+    script.id = "6VEDOk7GUi2KOCLHVVBhn";
+    script.domain = "www.chatbase.co";
+    document.body.appendChild(script);
+  };
+
+  if (document.readyState === "complete") {
+    onLoad();
+  } else {
+    window.addEventListener("load", onLoad);
+  }
+})();
+</script>
         
     <!-- Animation Styles --> 
      <!--animation styles-->> 
@@ -533,7 +563,11 @@
                               <li><a href="reading/advanced.html">Advanced (C1)</a></li>
                             </ul>
                           </li>
-                          <li><a href="sing.up.html" class="nav-btn mobile-btn" >Sign Up</a></li>
+                          </li><a href="#" class="nav-btn mobile-btn">Registration</a></li>
+                          <ul class="navbar">
+  <li><a href="sing.up.html" class="nav-btn" id="signUpLink">Sign Up</a></li>
+  <li><a href="#" class="nav-btn" id="logoutBtn" style="display: none;">Log Out</a></li>
+</ul>
                 </ul>
             </nav>
         </div>
@@ -1046,6 +1080,41 @@
             });
         }
     });
+</script>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+  import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDhquB54mmlWdjaLt_DehvrLWf9-odK1jw",
+    authDomain: "ieltsmentorhub-7ab31.firebaseapp.com",
+    projectId: "ieltsmentorhub-7ab31",
+    storageBucket: "ieltsmentorhub-7ab31.appspot.com",
+    messagingSenderId: "114050837977",
+    appId: "1:114050837977:web:77e26664a2ca9a77713dc8"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  const signUpLink = document.getElementById("signUpLink");
+  const logoutBtn = document.getElementById("logoutBtn");
+
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      signUpLink.style.display = "none";
+      logoutBtn.style.display = "inline-block";
+    } else {
+      signUpLink.style.display = "inline-block";
+      logoutBtn.style.display = "none";
+    }
+  });
+
+  logoutBtn.addEventListener("click", () => {
+    signOut(auth).then(() => {
+      location.reload();
+    });
+  });
 </script>
 </body>
 </html>
