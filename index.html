@@ -1414,13 +1414,12 @@
       mobileLogout.style.display = "none";
     }
   });
-
-  logoutBtn.addEventListener("click", () => {
+mobileLogout.addEventListener("click", () => {
     signOut(auth).then(() => {
       location.reload();
     });
   });
-  mobileLogout.addEventListener("click", () => {
+  logoutBtn.addEventListener("click", () => {
     signOut(auth).then(() => {
       location.reload();
     });
