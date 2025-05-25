@@ -657,6 +657,9 @@
     appId: "1:114050837977:web:77e26664a2ca9a77713dc8"
   };
 
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
   const signUpLink = document.getElementById("signUpLink");
   const mobileSignUp = document.getElementById("mobileSignUp");
   const logoutBtn = document.getElementById("logoutBtn");
